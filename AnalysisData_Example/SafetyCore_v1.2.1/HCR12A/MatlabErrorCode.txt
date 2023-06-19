@@ -1,0 +1,5 @@
+Function name: Set_RobotLink
+Function name: Plot_CRI
+Line: 8
+Line: 58
+Error message: 인덱스가 배열 요소 개수(5)를 초과합니다.

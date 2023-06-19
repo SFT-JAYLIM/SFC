@@ -1,0 +1,174 @@
+{
+  "RobotInfo": {
+    "BasicInfo": {
+      "RobotModel": "A0509",
+	  "BaseModel": "PHA",
+      "EndEffectorMass": 1,
+      "StepTime": 0.1,
+      "SaveVideo": 1,
+      "RobotBasePosition": "0 0 0",
+      "RobotBaseRotation": "0 0 0",
+      "DrawingPosition": "0 0",
+      "DrawingBasePoint": "0 0",
+      "DrawingScale": 1,
+      "CanvasBackgroundColor": "#EEEEEE",
+      "EffectiveMassLimit": "0.5 250",
+      "VelocityMultiple": 3,
+      "BodyProperty": "BOTH",
+      "EERotate": 0
+    },
+    "CustomEE": {
+      "CustomEEColor": "#84BFF8",
+      "CustomEEOpacity": 0.2,
+      "CustomEEFileName": "link6",
+      "CustomEEPosition": "0 0 -1050",
+      "CustomEERotation": "0 0 0"
+    },
+    "RobotLink": [
+      {
+        "LinkIndex": 1,
+        "ColliJoint": 1,
+        "ColliPos": "0 0 0",
+        "ColliShape": 5,
+        "ColliRadi": 60,
+        "ColliFillet": 17,
+        "ExposureDir": "0 0 1",
+        "CoverInfo": 0,
+        "SetCheckBox": 1,
+        "Color": "#00FFB2"
+      },
+      {
+        "LinkIndex": 2,
+        "ColliJoint": 2,
+        "ColliPos": "-409 0 230",
+        "ColliShape": 5,
+        "ColliRadi": 60,
+        "ColliFillet": 17,
+        "ExposureDir": "0 0 1",
+        "CoverInfo": 0,
+        "SetCheckBox": 1,
+        "Color": "#C2FF74"
+      },
+      {
+        "LinkIndex": 3,
+        "ColliJoint": 2,
+        "ColliPos": "0 0 230",
+        "ColliShape": 5,
+        "ColliRadi": 60,
+        "ColliFillet": 17,
+        "ExposureDir": "0 0 1",
+        "CoverInfo": 0,
+        "SetCheckBox": 1,
+        "Color": "#CD0062"
+      },
+      {
+        "LinkIndex": 4,
+        "ColliJoint": 3,
+        "ColliPos": "0 0 -90",
+        "ColliShape": 5,
+        "ColliRadi": 45,
+        "ColliFillet": 17,
+        "ExposureDir": "0 0 -1",
+        "CoverInfo": 0,
+        "SetCheckBox": 1,
+        "Color": "#FFF067"
+      },
+      {
+        "LinkIndex": 5,
+        "ColliJoint": 4,
+        "ColliPos": "0 0 210",
+        "ColliShape": 5,
+        "ColliRadi": 45,
+        "ColliFillet": 17,
+        "ExposureDir": "0 0 1",
+        "CoverInfo": 0,
+        "SetCheckBox": 1,
+        "Color": "#88E2FF"
+      },
+      {
+        "LinkIndex": 6,
+        "ColliJoint": 5,
+        "ColliPos": "0 0 -100",
+        "ColliShape": 5,
+        "ColliRadi": 45,
+        "ColliFillet": 17,
+        "ExposureDir": "0 0 -1",
+        "CoverInfo": 0,
+        "SetCheckBox": 1,
+        "Color": "#FF5D5C"
+      }
+    ],
+    "RobotEndEffector": [
+      {
+        "EEIndex": 0,
+        "ColliJoint": 6,
+        "ColliPos": "54 13 121",
+        "ColliShape": 8,
+        "ColliRadi": 0,
+        "ColliFillet": 1,
+        "ColliRotation": "-0.002826723317357468 -0.5586238050604246 1.2785624249736444e-19",
+        "ExposureDir": "-0.53001970708261 0.0023970166965929696 0.8479819363730694",
+        "CoverInfo": 0,
+        "Color": "#FE1C57",
+        "Opacity": 0.9,
+        "Name": null
+      },
+      {
+        "EEIndex": 1,
+        "ColliJoint": 6,
+        "ColliPos": "54 -13 121",
+        "ColliShape": 8,
+        "ColliRadi": 0,
+        "ColliFillet": 1,
+        "ColliRotation": "0 -0.5621813111881044 0",
+        "ExposureDir": "-0.5330330597851783 0 0.846094413866473",
+        "CoverInfo": 0,
+        "Color": "#FD841F",
+        "Opacity": 0.9,
+        "Name": null
+      },
+      {
+        "EEIndex": 2,
+        "ColliJoint": 6,
+        "ColliPos": "-55 -13 121",
+        "ColliShape": 8,
+        "ColliRadi": 0,
+        "ColliFillet": 1,
+        "ColliRotation": "0 0.7469200975253794 0",
+        "ExposureDir": "0.679382000286527 0 0.7337847761344449",
+        "CoverInfo": 0,
+        "Color": "#FFD759",
+        "Opacity": 0.9,
+        "Name": null
+      },
+      {
+        "EEIndex": 3,
+        "ColliJoint": 6,
+        "ColliPos": "-55 13 121",
+        "ColliShape": 8,
+        "ColliRadi": 0,
+        "ColliFillet": 1,
+        "ColliRotation": "0 0.5325455483726627 0",
+        "ExposureDir": "0.5077280180864002 0 0.8615174169162549",
+        "CoverInfo": 0,
+        "Color": "#50D12F",
+        "Opacity": 0.9,
+        "Name": null
+      }
+    ],
+    "RiskSpace": [
+      {
+        "RiskSpaceIndex": 0,
+        "ColliBodyCloth": 2,
+        "ColliBody": "Chest",
+        "Hspace": "-1706 1019 1708 2029",
+        "BackMotion": "199 0",
+        "ZaxisDirection": 0,
+        "Color": "#9F4C99",
+        "Opacity": 0.4,
+        "Name": null
+      }
+    ],
+    "MotionDivision": []
+  }
+}

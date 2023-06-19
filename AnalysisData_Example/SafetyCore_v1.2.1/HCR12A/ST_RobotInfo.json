@@ -1,0 +1,170 @@
+{
+  "RobotInfo": {
+    "BasicInfo": {
+      "RobotModel": "HCR12A",
+      "EndEffectorMass": 1,
+      "StepTime": 1,
+      "SaveVideo": 1,
+      "RobotBasePosition": "0 0 0",
+      "RobotBaseRotation": "0 0 0",
+      "DrawingPosition": "0 0",
+      "DrawingBasePoint": "0 0",
+      "DrawingScale": 1,
+      "CanvasBackgroundColor": "#EEEEEE",
+      "EffectiveMassLimit": "0.5 250",
+      "VelocityMultiple": 3,
+      "BodyProperty": "BOTH",
+      "MotionFileName": "ST_Motioninfo",
+      "RobotSerialNumber": "Test4",
+      "RobotName": "230426_HCR5A",
+      "EERotate": 0
+    },
+    "CustomEE": {
+      "CustomEEColor": "#50D12F",
+      "CustomEEOpacity": 0.2,
+      "CustomEEFileName": null,
+      "CustomEEPosition": "0 0 0",
+      "CustomEERotation": "0 0 0"
+    },
+    "RobotLink": [
+      {
+        "LinkIndex": 1,
+        "ColliJoint": 1,
+        "ColliPos": "0 0 0",
+        "ColliShape": 5,
+        "ColliRadi": 85,
+        "ColliFillet": 10,
+        "ExposureDir": "0 0 1",
+        "CoverInfo": 0,
+        "SetCheckBox": 1,
+        "Color": "#00FFB2"
+      },
+      {
+        "LinkIndex": 2,
+        "ColliJoint": 2,
+        "ColliPos": "-600 0 -280",
+        "ColliShape": 5,
+        "ColliRadi": 85,
+        "ColliFillet": 10,
+        "ExposureDir": "0 0 -1",
+        "CoverInfo": 0,
+        "SetCheckBox": 1,
+        "Color": "#C2FF74"
+      },
+      {
+        "LinkIndex": 3,
+        "ColliJoint": 2,
+        "ColliPos": "0 0 -200",
+        "ColliShape": 5,
+        "ColliRadi": 64,
+        "ColliFillet": 9,
+        "ExposureDir": "0 0 -1",
+        "CoverInfo": 0,
+        "SetCheckBox": 1,
+        "Color": "#CD0062"
+      },
+      {
+        "LinkIndex": 4,
+        "ColliJoint": 3,
+        "ColliPos": "-105 0 0",
+        "ColliShape": 5,
+        "ColliRadi": 64,
+        "ColliFillet": 10,
+        "ExposureDir": "0 1 0",
+        "CoverInfo": 0,
+        "SetCheckBox": 1,
+        "Color": "#FFF067"
+      },
+      {
+        "LinkIndex": 5,
+        "ColliJoint": 3,
+        "ColliPos": "0 0 0",
+        "ColliShape": 5,
+        "ColliRadi": 52,
+        "ColliFillet": 5,
+        "ExposureDir": "0 0 -1",
+        "CoverInfo": 0,
+        "SetCheckBox": 1,
+        "Color": "#88E2FF"
+      },
+      {
+        "LinkIndex": 6,
+        "ColliJoint": 4,
+        "ColliPos": "0 400 0",
+        "ColliShape": 5,
+        "ColliRadi": 52,
+        "ColliFillet": 8,
+        "ExposureDir": "0 -1 0",
+        "CoverInfo": 0,
+        "SetCheckBox": 1,
+        "Color": "#FF5D5C"
+      },
+	  {
+        "LinkIndex": 7,
+        "ColliJoint": 4,
+        "ColliPos": "0 380 100",
+        "ColliShape": 2,
+        "ColliRadi": 58,
+        "ColliFillet": 0,
+        "ExposureDir": "1 0 0",
+        "CoverInfo": 0,
+        "SetCheckBox": 1,
+        "Color": "#FF5D5C"
+      },
+	  {
+        "LinkIndex": 8,
+        "ColliJoint": 4,
+        "ColliPos": "0 0 150",
+        "ColliShape": 5,
+        "ColliRadi": 50,
+        "ColliFillet": 11,
+        "ExposureDir": "0 0 1",
+        "CoverInfo": 0,
+        "SetCheckBox": 1,
+        "Color": "#FF5D5C"
+      },
+      {
+        "LinkIndex": 9,
+        "ColliJoint": 5,
+        "ColliPos": "0 0 0",
+        "ColliShape": 5,
+        "ColliRadi": 50,
+        "ColliFillet": 46,
+        "ExposureDir": "0 -1 -1",
+        "CoverInfo": 0,
+        "SetCheckBox": 1,
+        "Color": "#FF8E2B"
+      }
+    ],
+    "RobotEndEffector": [
+      {
+        "EEIndex": 0,
+        "ColliJoint": 6,
+        "ColliPos": "0 0 50",
+        "ColliShape": 1,
+        "ColliRadi": 10,
+        "ColliFillet": 0,
+        "ColliRotation": "0 0 0",
+        "ExposureDir": "0 0 1",
+        "CoverInfo": 0,
+        "Color": "#CECECE",
+        "Opacity": 0.9,
+        "Name": null
+      }
+    ],
+    "RiskSpace": [
+      {
+        "RiskSpaceIndex": 0,
+        "ColliBodyCloth": 2,
+        "ColliBody": "Chest",
+        "Hspace": "-1854 1497 3713 2995",
+        "BackMotion": "0 0",
+        "ZaxisDirection": 0,
+        "Color": "#9F4C99",
+        "Opacity": 0.4,
+        "Name": null
+      }
+    ],
+    "MotionDivision": []
+  }
+}

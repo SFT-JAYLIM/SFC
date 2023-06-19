@@ -1,0 +1,146 @@
+{
+  "RobotInfo": {
+    "BasicInfo": {
+      "RobotModel": "RB5",
+      "EndEffectorMass": 1,
+      "StepTime": 0.1,
+      "SaveVideo": 1,
+      "RobotBasePosition": "0 0 0",
+      "RobotBaseRotation": "0 0 0",
+      "DrawingPosition": "0 0",
+      "DrawingBasePoint": "0 0",
+      "DrawingScale": 1,
+      "CanvasBackgroundColor": "#EEEEEE",
+      "EffectiveMassLimit": "0.5 250",
+      "VelocityMultiple": 3,
+      "BodyProperty": "BOTH",
+      "MotionFileName": "ST_MotionInfo.txt",
+      "RobotSerialNumber": "Test2",
+      "RobotName": "230424_RB5",
+      "EERotate": 0
+    },
+    "CustomEE": {
+      "CustomEEColor": "#50D12F",
+      "CustomEEOpacity": 0.2,
+      "CustomEEFileName": null,
+      "CustomEEPosition": "0 0 0",
+      "CustomEERotation": "0 0 0"
+    },
+    "RobotLink": [
+      {
+        "LinkIndex": 1,
+        "ColliJoint": 1,
+        "ColliPos": "0 -60 0",
+        "ColliShape": 5,
+        "ColliRadi": 58,
+        "ColliFillet": 7,
+        "ExposureDir": "0 -1 0",
+        "CoverInfo": 0,
+        "SetCheckBox": 1,
+        "Color": "#00FFB2"
+      },
+      {
+        "LinkIndex": 2,
+        "ColliJoint": 2,
+        "ColliPos": "-425 0 -200",
+        "ColliShape": 5,
+        "ColliRadi": 58,
+        "ColliFillet": 7,
+        "ExposureDir": "0 0 -1",
+        "CoverInfo": 0,
+        "SetCheckBox": 1,
+        "Color": "#C2FF74"
+      },
+      {
+        "LinkIndex": 3,
+        "ColliJoint": 2,
+        "ColliPos": "0 0 -200",
+        "ColliShape": 5,
+        "ColliRadi": 58,
+        "ColliFillet": 5,
+        "ExposureDir": "0 0 -1",
+        "CoverInfo": 0,
+        "SetCheckBox": 1,
+        "Color": "#CD0062"
+      },
+      {
+        "LinkIndex": 4,
+        "ColliJoint": 3,
+        "ColliPos": "-402 0 10",
+        "ColliShape": 5,
+        "ColliRadi": 59,
+        "ColliFillet": 5,
+        "ExposureDir": "-1 0 1",
+        "CoverInfo": 0,
+        "SetCheckBox": 1,
+        "Color": "#FFF067"
+      },
+      {
+        "LinkIndex": 5,
+        "ColliJoint": 3,
+        "ColliPos": "0 0 45",
+        "ColliShape": 5,
+        "ColliRadi": 39,
+        "ColliFillet": 5,
+        "ExposureDir": "0 0 1",
+        "CoverInfo": 0,
+        "SetCheckBox": 1,
+        "Color": "#88E2FF"
+      },
+      {
+        "LinkIndex": 6,
+        "ColliJoint": 4,
+        "ColliPos": "0 0 -42",
+        "ColliShape": 5,
+        "ColliRadi": 39,
+        "ColliFillet": 5,
+        "ExposureDir": "0 0 -1",
+        "CoverInfo": 0,
+        "SetCheckBox": 1,
+        "Color": "#FF5D5C"
+      },
+      {
+        "LinkIndex": 7,
+        "ColliJoint": 5,
+        "ColliPos": "0 0 44",
+        "ColliShape": 5,
+        "ColliRadi": 39,
+        "ColliFillet": 5,
+        "ExposureDir": "0 0 1",
+        "CoverInfo": 0,
+        "SetCheckBox": 1,
+        "Color": "#FF8E2B"
+      }
+    ],
+    "RobotEndEffector": [
+      {
+        "EEIndex": 0,
+        "ColliJoint": 6,
+        "ColliPos": "0 0 50",
+        "ColliShape": 1,
+        "ColliRadi": 25,
+        "ColliFillet": 0,
+        "ColliRotation": "0 0 0",
+        "ExposureDir": "0 0 1",
+        "CoverInfo": 0,
+        "Color": "#FF512B",
+        "Opacity": 0.9,
+        "Name": null
+      }
+    ],
+    "RiskSpace": [
+      {
+        "RiskSpaceIndex": 0,
+        "ColliBodyCloth": 2,
+        "ColliBody": "Chest",
+        "Hspace": "-1225.9 959.6 2662.9 1959.5",
+        "BackMotion": "0 0",
+        "ZaxisDirection": 0,
+        "Color": "#9F4C99",
+        "Opacity": 0.4,
+        "Name": null
+      }
+    ],
+    "MotionDivision": []
+  }
+}

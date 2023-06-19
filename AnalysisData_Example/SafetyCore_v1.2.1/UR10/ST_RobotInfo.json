@@ -1,0 +1,292 @@
+{
+    "RobotInfo" : {
+        "BasicInfo" : {
+            "RobotModel" : "UR10",
+            "EndEffectorMass" : 0,
+            "StepTime" : 0.1,
+            "VelocityMultiple" : 3,
+            "EffectiveMassLimit" : "0.5 250",
+            "SaveVideo" : 1,
+            "RobotBasePosition" : "0 0 0",
+            "RobotBaseRotation" : "0 0 0",
+            "DrawingScale" : 1,
+            "DrawingPosition" : "0 0",
+            "DrawingBasePoint" : "0 0",
+            "NotUseThickSum" : 0,
+            "CanvasBackgroundColor" : "#1890ff"
+        },
+        "CustomEE" : {
+            "CustomEEPosition": "0 0 0",
+            "CustomEERotation": "0 0 0"
+        },    
+        "RobotLink" : [
+            {
+                "LinkIndex" : 1,
+                "ColliJoint" : 1,
+                "ColliPos" : 	"0 0 0",
+                "ColliShape" : 	5,
+                "ColliRadi" : 75,
+                "ColliFillet" : 17,
+                "ExposureDir" : "0 1 0",
+                "CoverInfo" : 0,
+                "Color": "#00FFB2",
+                "SetCheckBox" : 1
+            },
+            {              
+                "LinkIndex" : 2,
+                "ColliJoint" : 2,
+                "ColliPos" : "612 0 176",
+                "ColliShape" : 	5,
+                "ColliRadi" : 75,
+                "ColliFillet" : 17,
+                "ExposureDir" : "0 0 1",
+                "CoverInfo" : 0,
+                "Color": "#C2FF74",
+                "SetCheckBox" : 1
+            },
+            {
+                "LinkIndex" : 3,  
+                "ColliJoint" : 2,
+                "ColliPos" : "450 0 176",
+                "ColliShape" : 	2,
+                "ColliRadi" : 50,
+                "ColliFillet" : 0,
+                "ExposureDir" : "1 0 0",
+                "CoverInfo" : 0,
+                "Color": "#CD0062",
+                "SetCheckBox" : 1
+            },
+            {
+                "LinkIndex" : 4,  
+                "ColliJoint" : 2,
+                "ColliPos" : "300 0 176",
+                "ColliShape" : 	2,
+                "ColliRadi" : 50,
+                "ColliFillet" : 0,
+                "ExposureDir" : "1 0 0",
+                "CoverInfo" : 0,
+                "Color": "#FFF067",
+                "SetCheckBox" : 1
+            },
+            {
+                "LinkIndex" : 5,  
+                "ColliJoint" : 2,
+                "ColliPos" : "150 0 176",
+                "ColliShape" : 	2,
+                "ColliRadi" : 50,
+                "ColliFillet" : 0,
+                "ExposureDir" : "1 0 0",
+                "CoverInfo" : 0,
+                "Color": "#88E2FF",
+                "SetCheckBox" : 1
+            },
+            {
+                "LinkIndex" : 6,
+                "ColliJoint" : 2,
+                "ColliPos" : "0 0 176",
+                "ColliShape" : 	5,
+                "ColliRadi" : 75,
+                "ColliFillet" : 17,
+                "ExposureDir" : "0 0 1",
+                "CoverInfo" : 0,
+                "Color": "#FF5D5C",
+                "SetCheckBox" : 1
+            },
+            {
+                "LinkIndex" : 7,
+                "ColliJoint" : 3,
+                "ColliPos" : "572.3 0 0",
+                "ColliShape" : 	5,
+                "ColliRadi" : 75,
+                "ColliFillet" : 17,
+                "ExposureDir" : "0 0 -1",
+                "CoverInfo" : 0,
+                "Color": "#FF8E2B",
+                "SetCheckBox" : 1
+            },
+            {
+                "LinkIndex" : 8,
+                "ColliJoint" : 3,
+                "ColliPos" : "450 0 50",
+                "ColliShape" : 2,
+                "ColliRadi" : 40,
+                "ColliFillet" : 0,
+                "ExposureDir" : "1 0 0",
+                "CoverInfo" : 0,
+                "Color": "#1ABC9C",
+                "SetCheckBox" : 1
+            },
+            {
+                "LinkIndex" : 9,
+                "ColliJoint" : 3,
+                "ColliPos" : "290 0 50",
+                "ColliShape" : 2,
+                "ColliRadi" : 40,
+                "ColliFillet" : 0,
+                "ExposureDir" : "1 0 0",
+                "CoverInfo" : 0,
+                "Color": "#DE3163",
+                "SetCheckBox" : 1
+            },
+            {
+                "LinkIndex" : 10,
+                "ColliJoint" : 3,
+                "ColliPos" : "120 0 50",
+                "ColliShape" : 	2,
+                "ColliRadi" : 40,
+                "ColliFillet" : 0,
+                "ExposureDir" : "1 0 0",
+                "CoverInfo" : 0,
+                "Color": "#FF7F50",
+                "SetCheckBox" : 1
+            },
+            {
+                "LinkIndex" : 11,
+                "ColliJoint" : 3,
+                "ColliPos" : "0 0 0",
+                "ColliShape" : 	5,
+                "ColliRadi" : 45,
+                "ColliFillet" : 17,
+                "ExposureDir" : "0 0 -1",
+                "CoverInfo" : 0,
+                "Color": "#3530d1",
+                "SetCheckBox" : 1
+            },
+            {
+                "LinkIndex" : 12,
+                "ColliJoint" : 4,
+                "ColliPos" : "0 0 -57",
+                "ColliShape" : 5,
+                "ColliRadi" : 45,
+                "ColliFillet" : 17,
+                "ExposureDir" : "0 0 -1",
+                "CoverInfo" : 0,
+                "Color": "#0072BD",
+                "SetCheckBox" : 1
+            },
+            {
+                "LinkIndex" : 13,
+                "ColliJoint" : 5,
+                "ColliPos" : "0 0 -57",
+                "ColliShape" : 5,
+                "ColliRadi" : 45,
+                "ColliFillet" : 17,
+                "ExposureDir" : "0 0 -1",
+                "CoverInfo" : 0,
+                "Color": "#D95319",
+                "SetCheckBox" : 1
+            }
+        ],
+        "RobotEndEffector": [
+            {
+              "EEIndex": 0,
+              "ColliJoint": 6,
+              "ColliPos": "3.3000600337982178 -0.12963899970054626 237.77999877929688",
+              "ColliShape": 1,
+              "ColliRadi": 25,
+              "ColliFillet": 0,
+              "ColliRotation": "0 0 0",
+              "ExposureDir": "0 0 100",
+              "CoverInfo": 0,
+              "Color": "#C03A2E",
+              "Opacity": 0.9,
+              "Name": "Sphere0"
+            },
+            {
+              "EEIndex": 1,
+              "ColliJoint": 6,
+              "ColliPos": "0 0 50",
+              "ColliShape": 1,
+              "ColliRadi": 25,
+              "ColliFillet": 0,
+              "ColliRotation": "0 0 0",
+              "ExposureDir": "0 0 1",
+              "CoverInfo": 0,
+              "Color": "#9723C2",
+              "Opacity": 0.9,
+              "Name": "Sphere1"
+            },
+            {
+              "EEIndex": 2,
+              "ColliJoint": 6,
+              "ColliPos": "0 0 50",
+              "ColliShape": 1,
+              "ColliRadi": 25,
+              "ColliFillet": 0,
+              "ColliRotation": "0 0 0",
+              "ExposureDir": "0 0 1",
+              "CoverInfo": 0,
+              "Color": "#39CA8E",
+              "Opacity": 0.9,
+              "Name": "Sphere2"
+            },
+            {
+              "EEIndex": 3,
+              "ColliJoint": 6,
+              "ColliPos": "0 0 50",
+              "ColliShape": 1,
+              "ColliRadi": 25,
+              "ColliFillet": 0,
+              "ColliRotation": "0 0 0",
+              "ExposureDir": "0 0 1",
+              "CoverInfo": 0,
+              "Color": "#86C1EA",
+              "Opacity": 0.9,
+              "Name": "asdfsad asdnf"
+            },
+            {
+              "EEIndex": 4,
+              "ColliJoint": 6,
+              "ColliPos": "0 0 50",
+              "ColliShape": 1,
+              "ColliRadi": 25,
+              "ColliFillet": 0,
+              "ColliRotation": "0 0 0",
+              "ExposureDir": "0 0 1",
+              "CoverInfo": 0,
+              "Color": "#C36A2D",
+              "Opacity": 0.9,
+              "Name": "가나다라 마바"
+            },
+            {
+              "EEIndex": 5,
+              "ColliJoint": 6,
+              "ColliPos": "8 1 24",
+              "ColliShape": 1,
+              "ColliRadi": 25,
+              "ColliFillet": 0,
+              "ColliRotation": "-2.1300779090879214 -0.7175780056368967 0.025155538339356402",
+              "ExposureDir": "-0.6575618705205752 0.6386098084546339 -0.399737287456422",
+              "CoverInfo": 0,
+              "Color": "#581115",
+              "Opacity": 0.9,
+              "Name": "aasd가나다라마바사"
+            }
+          ],
+        "RiskSpace" : [
+            {         
+                "RiskSpaceIndex" : 1,
+                "ColliBodyCloth" : 0,
+                "ColliBody" : "Chest",
+                "Hspace" : "-1006 671 1166.67 523.33",
+                "BackMotion" : "0 0",
+                "ZaxisDirection": 1,
+                "Color": null,
+                "Opacity": null,
+                "Name": null
+            },
+            {
+                "RiskSpaceIndex" : 2,
+                "ColliBodyCloth" : 2,
+                "ColliBody" : "HandAndFinger",
+                "Hspace" : "294 371 436.67 876.67",
+                "BackMotion" : "0 0",
+                "ZaxisDirection": 1,
+                "Color": null,
+                "Opacity": null,
+                "Name": null
+            }
+        ],
+        "MotionDivision": []
+    }
+}

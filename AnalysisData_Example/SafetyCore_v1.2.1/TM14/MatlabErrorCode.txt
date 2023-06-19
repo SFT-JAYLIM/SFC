@@ -1,0 +1,9 @@
+Function name: alternateGetframe
+Function name: getframe
+Function name: ISOVeiw
+Function name: Plot_CRI
+Line: 0
+Line: 67
+Line: 40
+Line: 79
+Error message: 이 유형의 변수는 점 인덱싱을 지원하지 않습니다.

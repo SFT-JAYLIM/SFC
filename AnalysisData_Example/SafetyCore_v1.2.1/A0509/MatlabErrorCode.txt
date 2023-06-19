@@ -1,0 +1,5 @@
+Function name: ColliPosView
+Function name: Plot_CRI
+Line: 65
+Line: 66
+Error message: 'LinkColor'은(는) 인식할 수 없는 함수 또는 변수입니다.
