@@ -1779,7 +1779,7 @@ function gSeqData=PathInfo(gSeqData, UserPath, InputDataPath)
 
     %ColliPosOnEE_Dot
     gSeqData.FolderInfo.ColliPosEE=[gSeqData.FolderInfo.UserPath,'\output\ColliPosOnRobot_EE_dot.jpg'];
-    gSeqData.FolderInfo.ColliPosEE_detail=[gSeqData.FolderInfo.UserPath,'\output\ColliPosOnRobot_EE_dot_'];
+    gSeqData.FolderInfo.ColliPosEE_detail=[gSeqData.FolderInfo.UserPath,'\output\ColliPosOnEE_dot_'];
 
     %ColliPosOnRobot_Dot
     gSeqData.FolderInfo.ColliPosRobot=[gSeqData.FolderInfo.UserPath,'\output\ColliPosOnRobot_dot.jpg'];
