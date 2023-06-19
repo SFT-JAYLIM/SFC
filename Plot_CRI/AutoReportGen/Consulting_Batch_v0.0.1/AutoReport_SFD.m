@@ -1,5 +1,6 @@
 function Status=AutoReport_SFD(UserPath, InputDataPath)
-        
+    TaskIdx='SFC';
+
     try
         ProcessID=[];
         objExcel = actxserver('Excel.Application');
@@ -1777,8 +1778,8 @@ function gSeqData=PathInfo(gSeqData, UserPath, InputDataPath)
     gSeqData.FolderInfo.RiskSpaceSnap=[gSeqData.FolderInfo.UserPath,'\output\RiskSpaceSnapShot'];
 
     %ColliPosOnEE_Dot
-    gSeqData.FolderInfo.ColliPosEE=[gSeqData.FolderInfo.UserPath,'\output\ColliPosOnEE_dot.jpg'];
-    gSeqData.FolderInfo.ColliPosEE_detail=[gSeqData.FolderInfo.UserPath,'\output\ColliPosOnEE_dot_'];
+    gSeqData.FolderInfo.ColliPosEE=[gSeqData.FolderInfo.UserPath,'\output\ColliPosOnRobot_EE_dot.jpg'];
+    gSeqData.FolderInfo.ColliPosEE_detail=[gSeqData.FolderInfo.UserPath,'\output\ColliPosOnRobot_EE_dot_'];
 
     %ColliPosOnRobot_Dot
     gSeqData.FolderInfo.ColliPosRobot=[gSeqData.FolderInfo.UserPath,'\output\ColliPosOnRobot_dot.jpg'];
@@ -2225,11 +2226,11 @@ function [RetValueR, RetValueEE]=ColliPosAnalysis(SimInfo, AnalysisResult)
         
         switch tempData
             case 1
-                Shape='Corner';
+                Shape='Sphere';
             case 5
                 Shape='Cylinder';
             case 8
-                Shape='Sphere';
+                Shape='Corner';
             otherwise
 
         end
@@ -2280,11 +2281,11 @@ function [RetValueR, RetValueEE]=ColliPosAnalysis(SimInfo, AnalysisResult)
         
         switch tempData
             case 1
-                Shape='Corner';
+                Shape='Sphere';
             case 5
                 Shape='Cylinder';
             case 8
-                Shape='Sphere';
+                Shape='Corner';
             otherwise
 
         end
