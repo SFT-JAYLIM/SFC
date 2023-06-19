@@ -1,0 +1,166 @@
+<deployment-project plugin="plugin.ezdeploy" plugin-version="1.0">
+  <configuration file="D:\Git_project\Plot_CRI_Solution\v1.3.2\Plot_CRI\v1\Plot_CRI.prj" location="D:\Git_project\Plot_CRI_Solution\v1.3.2\Plot_CRI\v1" name="Plot_CRI" target="target.ezdeploy.standalone" target-name="Application Compiler">
+    <param.appname>Plot_CRI</param.appname>
+    <param.icon />
+    <param.icons />
+    <param.version>1.0</param.version>
+    <param.authnamewatermark />
+    <param.email />
+    <param.company />
+    <param.summary />
+    <param.description />
+    <param.screenshot />
+    <param.guid />
+    <param.installpath.string>\Plot_CRI\</param.installpath.string>
+    <param.installpath.combo>option.installpath.programfiles</param.installpath.combo>
+    <param.logo />
+    <param.install.notes />
+    <param.target.install.notes />
+    <param.intermediate>${PROJECT_ROOT}\Plot_CRI\for_testing</param.intermediate>
+    <param.files.only>${PROJECT_ROOT}\Plot_CRI\for_redistribution_files_only</param.files.only>
+    <param.output>${PROJECT_ROOT}\Plot_CRI\for_redistribution</param.output>
+    <param.logdir>${PROJECT_ROOT}\Plot_CRI</param.logdir>
+    <param.enable.clean.build>false</param.enable.clean.build>
+    <param.user.defined.mcr.options />
+    <param.target.type>subtarget.standalone</param.target.type>
+    <param.support.packages />
+    <param.web.mcr>true</param.web.mcr>
+    <param.package.mcr>false</param.package.mcr>
+    <param.no.mcr>false</param.no.mcr>
+    <param.web.mcr.name>MyAppInstaller_web</param.web.mcr.name>
+    <param.package.mcr.name>MyAppInstaller_mcr</param.package.mcr.name>
+    <param.no.mcr.name>MyAppInstaller_app</param.no.mcr.name>
+    <param.windows.command.prompt>true</param.windows.command.prompt>
+    <param.create.log>false</param.create.log>
+    <param.log.file />
+    <param.native.matlab>false</param.native.matlab>
+    <param.checkbox>false</param.checkbox>
+    <param.example />
+    <param.help.text>Syntax 
+	 Plot_CRI -? 
+	 Plot_CRI UserPath InputDataPath 
+ Input Arguments 
+	 -?  print help on how to use the application 
+	 UserPath InputDataPath  input arguments</param.help.text>
+    <unset>
+      <param.icon />
+      <param.icons />
+      <param.version />
+      <param.authnamewatermark />
+      <param.email />
+      <param.company />
+      <param.summary />
+      <param.description />
+      <param.screenshot />
+      <param.guid />
+      <param.installpath.string />
+      <param.installpath.combo />
+      <param.logo />
+      <param.install.notes />
+      <param.target.install.notes />
+      <param.intermediate />
+      <param.files.only />
+      <param.output />
+      <param.logdir />
+      <param.enable.clean.build />
+      <param.user.defined.mcr.options />
+      <param.target.type />
+      <param.support.packages />
+      <param.web.mcr />
+      <param.package.mcr />
+      <param.no.mcr />
+      <param.web.mcr.name />
+      <param.package.mcr.name />
+      <param.no.mcr.name />
+      <param.windows.command.prompt />
+      <param.create.log />
+      <param.log.file />
+      <param.native.matlab />
+      <param.checkbox />
+      <param.example />
+    </unset>
+    <fileset.main>
+      <file>D:\Git_project\Plot_CRI_Solution\v1.3.2\Plot_CRI\Plot_CRI.m</file>
+    </fileset.main>
+    <fileset.resources />
+    <fileset.package />
+    <fileset.depfun>
+      <file>D:\Git_project\Plot_CRI_Solution\v1.3.2\Plot_CRI\animating_figure.m</file>
+      <file>D:\Git_project\Plot_CRI_Solution\v1.3.2\Plot_CRI\animating_figure_dot.m</file>
+      <file>D:\Git_project\Plot_CRI_Solution\v1.3.2\Plot_CRI\animating_figure_EE.m</file>
+      <file>D:\Git_project\Plot_CRI_Solution\v1.3.2\Plot_CRI\animating_figure_EE_dot.m</file>
+      <file>D:\Git_project\Plot_CRI_Solution\v1.3.2\Plot_CRI\animating_realtime.m</file>
+      <file>D:\Git_project\Plot_CRI_Solution\v1.3.2\Plot_CRI\calculate_ColorGrid.m</file>
+      <file>D:\Git_project\Plot_CRI_Solution\v1.3.2\Plot_CRI\calLinkMatrix.m</file>
+      <file>D:\Git_project\Plot_CRI_Solution\v1.3.2\Plot_CRI\calLinkWindowSize.m</file>
+      <file>D:\Git_project\Plot_CRI_Solution\v1.3.2\Plot_CRI\calWindowSize.m</file>
+      <file>D:\Git_project\Plot_CRI_Solution\v1.3.2\Plot_CRI\CheckStopSign.m</file>
+      <file>D:\Git_project\Plot_CRI_Solution\v1.3.2\Plot_CRI\ColliPosView.m</file>
+      <file>D:\Git_project\Plot_CRI_Solution\v1.3.2\Plot_CRI\creatCollaborativeBox.m</file>
+      <file>D:\Git_project\Plot_CRI_Solution\v1.3.2\Plot_CRI\creatCollaborativeBox_Numbering.m</file>
+      <file>D:\Git_project\Plot_CRI_Solution\v1.3.2\Plot_CRI\CropImage.m</file>
+      <file>D:\Git_project\Plot_CRI_Solution\v1.3.2\Plot_CRI\CSVDataLoad.m</file>
+      <file>D:\Git_project\Plot_CRI_Solution\v1.3.2\Plot_CRI\ISOVeiw.m</file>
+      <file>D:\Git_project\Plot_CRI_Solution\v1.3.2\Plot_CRI\LoadWaterMarkImage.m</file>
+      <file>D:\Git_project\Plot_CRI_Solution\v1.3.2\Plot_CRI\move.m</file>
+      <file>D:\Git_project\Plot_CRI_Solution\v1.3.2\Plot_CRI\RiskSpaceImage.m</file>
+      <file>D:\Git_project\Plot_CRI_Solution\v1.3.2\Plot_CRI\RiskSpaceVeiw.m</file>
+      <file>D:\Git_project\Plot_CRI_Solution\v1.3.2\Plot_CRI\Set_BaseModel.m</file>
+      <file>D:\Git_project\Plot_CRI_Solution\v1.3.2\Plot_CRI\Set_DrawingImage.m</file>
+      <file>D:\Git_project\Plot_CRI_Solution\v1.3.2\Plot_CRI\Set_JsonRobotInfo.m</file>
+      <file>D:\Git_project\Plot_CRI_Solution\v1.3.2\Plot_CRI\Set_RobotLink.m</file>
+      <file>D:\Git_project\Plot_CRI_Solution\v1.3.2\Plot_CRI\Set_RobotModel.m</file>
+      <file>D:\Git_project\Plot_CRI_Solution\v1.3.2\Plot_CRI\Set_StartPosition.m</file>
+      <file>D:\Git_project\Plot_CRI_Solution\v1.3.2\Plot_CRI\setEEColorData.m</file>
+      <file>D:\Git_project\Plot_CRI_Solution\v1.3.2\Plot_CRI\SetFigureWindows.m</file>
+      <file>D:\Git_project\Plot_CRI_Solution\v1.3.2\Plot_CRI\setLinkColorData.m</file>
+      <file>D:\Git_project\Plot_CRI_Solution\v1.3.2\Plot_CRI\SpaceAnalysis.m</file>
+      <file>D:\Git_project\Plot_CRI_Solution\v1.3.2\Plot_CRI\STL2MAT.m</file>
+      <file>D:\Git_project\Plot_CRI_Solution\v1.3.2\Plot_CRI\stlGetFormat.m</file>
+      <file>D:\Git_project\Plot_CRI_Solution\v1.3.2\Plot_CRI\stlRead.m</file>
+      <file>D:\Git_project\Plot_CRI_Solution\v1.3.2\Plot_CRI\stlReadAscii.m</file>
+      <file>D:\Git_project\Plot_CRI_Solution\v1.3.2\Plot_CRI\stlReadBinary.m</file>
+      <file>D:\Git_project\Plot_CRI_Solution\v1.3.2\Plot_CRI\stlSlimVerts.m</file>
+      <file>D:\Git_project\Plot_CRI_Solution\v1.3.2\Plot_CRI\tmat.m</file>
+      <file>D:\Git_project\Plot_CRI_Solution\v1.3.2\Plot_CRI\WriteWaterMark.m</file>
+    </fileset.depfun>
+    <build-deliverables>
+      <file location="${PROJECT_ROOT}\Plot_CRI\for_testing" name="splash.png" optional="false">D:\Git_project\Plot_CRI_Solution\v1.3.2\Plot_CRI\v1\Plot_CRI\for_testing\splash.png</file>
+      <file location="${PROJECT_ROOT}\Plot_CRI\for_testing" name="Plot_CRI.exe" optional="false">D:\Git_project\Plot_CRI_Solution\v1.3.2\Plot_CRI\v1\Plot_CRI\for_testing\Plot_CRI.exe</file>
+      <file location="${PROJECT_ROOT}\Plot_CRI\for_testing" name="readme.txt" optional="true">D:\Git_project\Plot_CRI_Solution\v1.3.2\Plot_CRI\v1\Plot_CRI\for_testing\readme.txt</file>
+    </build-deliverables>
+    <workflow />
+    <matlab>
+      <root>C:\Program Files\MATLAB\R2020b</root>
+      <toolboxes>
+        <toolbox name="matlabcoder" />
+        <toolbox name="neuralnetwork" />
+      </toolboxes>
+      <toolbox>
+        <matlabcoder>
+          <enabled>true</enabled>
+        </matlabcoder>
+      </toolbox>
+      <toolbox>
+        <neuralnetwork>
+          <enabled>true</enabled>
+        </neuralnetwork>
+      </toolbox>
+    </matlab>
+    <platform>
+      <unix>false</unix>
+      <mac>false</mac>
+      <windows>true</windows>
+      <win2k>false</win2k>
+      <winxp>false</winxp>
+      <vista>false</vista>
+      <linux>false</linux>
+      <solaris>false</solaris>
+      <osver>10.0</osver>
+      <os32>false</os32>
+      <os64>true</os64>
+      <arch>win64</arch>
+      <matlab>true</matlab>
+    </platform>
+  </configuration>
+</deployment-project>
