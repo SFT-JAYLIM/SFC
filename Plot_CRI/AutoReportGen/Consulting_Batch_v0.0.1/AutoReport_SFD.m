@@ -1,22 +1,23 @@
 function Status=AutoReport_SFD(UserPath, InputDataPath)
-    % Task => 'SFD' (for designer) or 'SFC'(for consulting)
-    Task='SFC';
-
-    gSeqData=[];
-    gSeqData.ErrCodeTotal=[];
-    gSeqData.nNextStep=1;
-    gSeqData.ErrCodeTotal=[];
-    gSeqData.ErrMsgTotal={};
-    
-    %Default Path
-    gSeqData.FolderInfo.UserPath=UserPath;
-    gSeqData.FolderInfo.InputDataPath=InputDataPath;
-    gSeqData.nNextStep=1;
-    whileidx=1;
-    
-    formatSpec = '%.3f';
-    % ---------------------------------------------- main function -------------------------------------------------------------------
+        
     try
+        ProcessID=[];
+        objExcel = actxserver('Excel.Application');
+        ProcessID=getExcelPid;
+    
+        gSeqData=[];
+        gSeqData.ErrCodeTotal=[];
+        gSeqData.nNextStep=1;
+        gSeqData.ErrCodeTotal=[];
+        gSeqData.ErrMsgTotal={};
+        
+        %Default Path
+        gSeqData.FolderInfo.UserPath=UserPath;
+        gSeqData.FolderInfo.InputDataPath=InputDataPath;
+        whileidx=1;
+        
+        formatSpec = '%.3f';
+
         ClockHandler=tic;
         RetryCount=0;
         clc
@@ -139,15 +140,7 @@ function Status=AutoReport_SFD(UserPath, InputDataPath)
                     gSeqData.nNextStep=gSeqData.nNextStep+1;
         
                 case 8
-                    if strcmpi(Task,'SFD')
-                        gSeqData=ResultGraphGeneration(AnalysisResult, SimInfo, gSeqData);
-                    elseif strcmpi(Task,'SFC')
-                        savefolder=[gSeqData.FolderInfo.GraphSaveFolder, '\', gSeqData.SimInfo.AutoReport.Standard];                        
-                        gSeqData.FolderInfo.GraphPathInfo.fig_name1=[savefolder '\Cobot_Speed.jpg'];
-                        gSeqData.FolderInfo.GraphPathInfo.fig_name2=[savefolder '\EE_Vel.jpg'];
-                        gSeqData.FolderInfo.GraphPathInfo.fig_name3=[savefolder '\All_CRI_Res.jpg'];
-                    end
-
+                    gSeqData=ResultGraphGeneration(AnalysisResult, SimInfo, gSeqData);                
                     gSeqData.nNextStep=gSeqData.nNextStep+1;                   
         
                 case 9
@@ -192,11 +185,8 @@ function Status=AutoReport_SFD(UserPath, InputDataPath)
                     end
                     
                     if isfile(ReportFormat)
-                        if strcmpi(Task,'SFC')
-                            system('taskkill /F /IM EXCEL.EXE');
-                            system('taskkill /F /IM Acrobat.exe');
-                        end
-
+%                         system('taskkill /F /IM EXCEL.EXE');
+%                         system('taskkill /F /IM Acrobat.exe');
                         clc
                         gSeqData.Count=0;
                         copyidx=1;
@@ -232,7 +222,8 @@ function Status=AutoReport_SFD(UserPath, InputDataPath)
         
                 case 11
                     % Report Making
-                    objExcel = actxserver('Excel.Application');
+%                     objExcel = actxserver('Excel.Application');
+%                     ProcessID=getExcelPid;
                     h=objExcel.Workbooks.Open(gSeqData.FolderInfo.Report); % Open Excel file. Full path is necessary!                
                     gSeqData.nNextStep=gSeqData.nNextStep+1;
         
@@ -335,11 +326,14 @@ function Status=AutoReport_SFD(UserPath, InputDataPath)
                     %23.06.15 PDF 이름 수정
                     ReportFileName=['(',gSeqData.BasicDocInfo.DocNumber,')ColliSion_Analysis_Report.pdf'];
                     gSeqData.FolderInfo.ReportPDF=[gSeqData.FolderInfo.UserPath,'\output\Report\PDF\',ReportFileName];
+%                     h.save;
                     h.ExportAsFixedFormat(0,gSeqData.FolderInfo.ReportPDF,0,'True','False',1,gSeqData.nPage.Total,'False');
                     objExcel.ActiveWorkbook.Close;
                     objExcel.Quit;
                     objExcel.delete;
-
+                    clc
+                    system(['taskkill /F /pid ',ProcessID]);
+                    clear objExcel;
                     gSeqData.nNextStep=99;
     
                 case 99
@@ -352,6 +346,7 @@ function Status=AutoReport_SFD(UserPath, InputDataPath)
         end
 
         Status=gSeqData.ErrCode;
+        ProcessID
 
         fid=fopen([gSeqData.FolderInfo.UserPath,'\output\ReportErrCode.txt'],"w");
         ErrCnt=length(gSeqData.ErrCodeTotal);
@@ -364,11 +359,14 @@ function Status=AutoReport_SFD(UserPath, InputDataPath)
         else
             fprintf(fid, 'Report Generated successfully!!');
             fprintf(fid, '\r\n');
+            fprintf(fid, ['ProcessID :: ' , ProcessID]);
         end
         fclose(fid);
 
+
     catch exception
         clc
+        system(['taskkill /F /pid ',ProcessID]);
         fid=fopen([gSeqData.FolderInfo.UserPath,'\output\ReportErrCode.txt'],"w");
         
         gSeqData.ErrCode=20100;
@@ -418,6 +416,7 @@ function Status=AutoReport_SFD(UserPath, InputDataPath)
         clc
         
         Status=gSeqData.ErrCode;
+        ProcessID
 
     end
 end
@@ -446,6 +445,8 @@ function gSeqData=BasicInfoLoad(gSeqData, SimInfo, AnalysisResult, formatSpec)
     gSeqData.BasicDocInfo.RequestingOrg=ExtractPattern(SimInfo.TextRobotInfo, 'IssuingCompany');
     gSeqData.BasicDocInfo.Requester=ExtractPattern(SimInfo.TextRobotInfo, 'Issuer');
     gSeqData.BasicDocInfo.Process=ExtractPattern(SimInfo.TextRobotInfo, 'ProcessName');
+
+
     gSeqData.BasicDocInfo.Lang=SimInfo.AutoReport.Language;
     formatOut ='yyyy-mm-dd';
     gSeqData.BasicDocInfo.IssueDate=datestr(datetime('now'),formatOut);     
@@ -461,6 +462,7 @@ function gSeqData=BasicInfoLoad(gSeqData, SimInfo, AnalysisResult, formatSpec)
     gSeqData.Scale.ExcelHeightCoeff = 0.3465;
     gSeqData.Scale.ExcelWidthCoeff = 2.6867;
     gSeqData.Scale.CompensationCoeff=0.69;
+
 
 end
 
@@ -1719,6 +1721,9 @@ end
 function gSeqData=PathInfo(gSeqData, UserPath, InputDataPath)
 
     gSeqData.ErrCode=20000;
+%     %Default Path
+%     gSeqData.FolderInfo.UserPath=UserPath;
+%     gSeqData.FolderInfo.InputDataPath=InputDataPath;
 
     %Origin Report Format file Path : KR. ver.
     gSeqData.FolderInfo.ReportOriginKR=[gSeqData.FolderInfo.InputDataPath,'\AutoReport\ReportKR.xlsx'];
@@ -1755,8 +1760,12 @@ function gSeqData=PathInfo(gSeqData, UserPath, InputDataPath)
     gSeqData.FolderInfo.GraphSaveFolder=[gSeqData.FolderInfo.UserPath,'\output\graph'];
     
     %Report Generation Path
-    gSeqData.FolderInfo.Report=[gSeqData.FolderInfo.UserPath,'\output\Report\Excel\PFLReport.xlsx'];
+    addno=num2str(randi([10000 99999],1,1));
+    gSeqData.FolderInfo.Report=[gSeqData.FolderInfo.UserPath,'\output\Report\Excel\PFLReport',addno,'.xlsx'];
     
+%     %PDF file Path that generated by Excel Type Report
+%     gSeqData.FolderInfo.ReportPDF=[gSeqData.FolderInfo.UserPath,'\output\Report\PDF\PFLReport.pdf'];
+
     if ~isfolder([gSeqData.FolderInfo.UserPath,'\output\Report\Excel'])
         mkdir([gSeqData.FolderInfo.UserPath,'\output\Report\Excel'])
     end
@@ -1843,7 +1852,10 @@ function gSeqData=ResultGraphGeneration(AnalysisResult, AnlysisInfo, gSeqData)
 %     set(gcf,'color','w','Position',[522,268,913,642]); hold on, box on, axis on;
     set(gcf,'color','w','Position',[522,268,1170,642]); hold on, box on, axis on;
     set(gca,'FontSize',12,'FontWeight','Bold');
-    EEVel=ImpactVelNorm(:,1:size(AnlysisInfo.RobotEndEffectorInfo,1));
+%     EEVel=ImpactVelNorm(:,1:size(AnlysisInfo.RobotEndEffectorInfo,1));
+    RobotLinkNo=size(gSeqData.SimInfo.RobotLinkInfo,1);
+    EENo=size(gSeqData.SimInfo.RobotEndEffectorInfo,1);
+    EEVel=ImpactVelNorm(:,(RobotLinkNo+1):(RobotLinkNo+EENo));
     plot(t,EEVel,'linewidth',1.5)
     xlabel('Time[sec]','FontSize',12,'FontWeight','bold'),ylabel('Speed of End Effector [mm/s]','FontSize',12,'FontWeight','bold');
     if max(EEVel)>0
@@ -2362,13 +2374,13 @@ function SplitDone = SaveVideoSplitImg(RiskSpaceMovie,SnapShotPath)
         if ((VideoLength>0) & (VideoLength<=5))
             Interval=0.1;
         elseif ((VideoLength>5) & (VideoLength<=20))
-            Interval=0.25;
+            Interval=0.1;
         elseif ((VideoLength>20) & (VideoLength<=60))
-            Interval=0.5;
+            Interval=0.1;
         elseif ((VideoLength>60) & (VideoLength<=120))
             Interval=1;
         elseif ((VideoLength>120) & (VideoLength<=300))
-            Interval=2;
+            Interval=1;
         elseif ((VideoLength>300) & (VideoLength<=500))
             Interval=5;
         elseif VideoLength>500
@@ -2453,4 +2465,23 @@ end
 function RetValue=ExtractPattern(str, match)
     tempValue=char(str(find(contains(str, match))+1));
     RetValue=tempValue(1:length(tempValue)-1);
+end
+
+function retValue=getExcelPid
+    taskToLookFor = 'Excel.exe';
+    commandLine = sprintf('tasklist /FI "IMAGENAME eq %s"', taskToLookFor);
+    [status result] = system(commandLine);
+    A=strread(result,'%s','whitespace','\n');
+    C=char(A(size(A,1)));
+    E=strrep(lower(strrep(C,' ','')),lower('excel.exe'),'');
+    tempPid=E(1:5);
+    ProcessID=[];
+    
+    for i=1:5
+        if 48<=double(tempPid(i)) & double(tempPid(i))<=57
+            ProcessID=[ProcessID, tempPid(i)];
+        end
+    end
+
+    retValue=ProcessID;
 end
