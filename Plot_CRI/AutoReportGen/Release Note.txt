@@ -1,0 +1,5 @@
+AutoReport_SFD 23.06.08 배포사항
+
+1. 충돌예상부위가 End Effector 상에 지정되지 않은 경우 관련 페이지 보고서에서 자동 삭제
+2. 충돌예상부위가 End Effector 상에 지정되지 않아 엔드이펙터 속도 그래프 생성시 오류 발생하는 문제 해결
+3. JSON RobotInfo 호출시 RobotLink 관련 자료형(struct 또는 cell)에 관계없이 데이터 로드하도록 변경
