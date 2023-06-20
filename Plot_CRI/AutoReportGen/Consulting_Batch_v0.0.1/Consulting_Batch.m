@@ -12,6 +12,7 @@
     gSeqData.FolderInfo.PlotCRIPath='..\..\';
     gSeqData.Visible=true;
     
+    
     defaultPath='D:\JayLim\OneDrive\SAFETICS\03_consulting\2023';
     RootPath='c:';
 
@@ -23,6 +24,9 @@
     while whileidx
         switch gSeqData.TaskIdx
             case 0 
+                gSeqData.CalculationSuccess=false;
+                gSeqData.PlotCRIDone=false;
+
                 cd(gSeqData.FolderInfo.CurrentPath);
                 clc
                 close all
@@ -34,27 +38,27 @@
                 disp(' ')
                 disp('    03. PLOT_CRI')
                 disp(' ')
-                disp('    11. BATCH PROCESS 1 - (SOLVER MULTI RUN)')
+                disp('    04. REPORT GENERATION')
                 disp(' ')
-                disp('    12. BATCH PROCESS 2 - (GRAPH GENERATING MULTI RUN)')
+                disp('    05. ONE STEP PROCESS FOR SOLVER TO REPORT')
                 disp(' ')
-                disp('    13. BATCH PROCESS 3 - (PLOT CRI MULTI RUN)')
+                disp('    06. ONE CYCLE OF SOLVER, GRAPH, PLOT CRI')
                 disp(' ')
-                disp('    14. BATCH PROCESS 4 - ("SOLVER - GRAPH SET" MULTI RUN)')
+                disp('    11. SOLVER MULTI RUN')
                 disp(' ')
-                disp('    15. BATCH PROCESS 5 - (ONE CYCLE OF SOLVER, GRAPH, PLOT CRI EACH)')
+                disp('    22. GRAPH GENERATING MULTI RUN')
                 disp(' ')
-                disp('    16. BATCH PROCESS 6 - ("SOLVER - GRAPH - PLOT CRI SET" MULTI RUN)')
+                disp('    33. PLOT CRI MULTI RUN')
                 disp(' ')
-                disp('    20. REPORT GENERATION')
+                disp('    44. REPORT GENERATION MULTI RUN')
                 disp(' ')
-                disp('    21. REPORT GENERATION MULTI')
+                disp('    55. ONE STEP PROCESS FOR SOLVER TO REPORT MULTI')
                 disp(' ')
-                disp('    30. ONE STEP PROCESS (SOLVER TO REPORT)')
+                disp('    66. SOLVER - GRAPH - PLOT CRI SET MULTI RUN')
+                disp(' ')          
+                disp('    70. SOLVER - GRAPH SET" MULTI RUN')
                 disp(' ')
-                disp('    31. ONE STEP PROCESS MULTI (SOLVER TO REPORT MULTI)')
-                disp(' ')
-                disp('    60. ONE STEP PROCESS (SOLVER TO REPORT with SAFETY_VELOCITY)')
+                disp('    80. ONE STEP PROCESS (SOLVER TO REPORT with SAFETY_VELOCITY)')
                 disp(' ')
                 disp('    99. EXIT')
                 disp(' ')
@@ -79,6 +83,7 @@
                     if gSeqData.FolderInfo.UserPath==0
                         gSeqData.TaskIdx=100;
                     else
+                        cd(gSeqData.FolderInfo.CurrentPath);
                         gSeqData=RunSolver(gSeqData);
                         gSeqData.TaskIdx=0;
                     end
@@ -99,6 +104,7 @@
                         gSeqData.TaskIdx=100;
                     else
                         % Statement
+                        cd(gSeqData.FolderInfo.CurrentPath);
                         setBodyProperty(gSeqData, 'KHU')
                         gSeqData=Graph_Batch(gSeqData);
                         gSeqData.TaskIdx=0;
@@ -120,7 +126,90 @@
                         gSeqData.TaskIdx=100;
                     else
                         % Statement
+                        cd(gSeqData.FolderInfo.CurrentPath);
                         gSeqData=Plot_CRI_Batch(gSeqData);
+                        gSeqData.TaskIdx=0;
+                    end
+                catch
+                    gSeqData.TaskIdx=0;
+                end
+
+            case 4 % REPORT GENERATION
+                try
+                     if isfolder(defaultPath)
+                        gSeqData.FolderInfo.UserPath=uigetdir(defaultPath);   
+                    else
+                        gSeqData.FolderInfo.UserPath=uigetdir([RootPath,'\']);
+                    end
+    
+                    if gSeqData.FolderInfo.UserPath==0
+                        gSeqData.TaskIdx=100;
+                    else
+                        cd(gSeqData.FolderInfo.CurrentPath);
+                        Status=AutoReport_SFD(gSeqData.FolderInfo.UserPath, gSeqData.FolderInfo.AppDataPath);
+                        gSeqData.TaskIdx=0;       
+                    end
+                catch
+                    gSeqData.TaskIdx=0;
+                end
+
+            case 5 % ONE STEP PROCESS (SOLVER TO REPORT)
+                try
+                    if isfolder(defaultPath)
+                        gSeqData.FolderInfo.UserPath=uigetdir(defaultPath);   
+                    else
+                        gSeqData.FolderInfo.UserPath=uigetdir([RootPath,'\']);
+                    end
+    
+                    if gSeqData.FolderInfo.UserPath==0
+                        gSeqData.TaskIdx=100;
+                    else
+                        %statement
+                        cd(gSeqData.FolderInfo.CurrentPath);
+                        try
+                            gSeqData=RunSolver(gSeqData);
+                        catch
+                            gSeqData.TaskIdx=0;
+                        end
+
+                        if gSeqData.CalculationSuccess
+                            cd(gSeqData.FolderInfo.CurrentPath);
+                            gSeqData=Plot_CRI_Batch(gSeqData);
+                        end
+
+                        if gSeqData.PlotCRIDone
+                            cd(gSeqData.FolderInfo.CurrentPath);
+                            Status=AutoReport_SFD(gSeqData.FolderInfo.UserPath, gSeqData.FolderInfo.AppDataPath);
+                        end
+
+                        gSeqData.TaskIdx=0;
+                    end
+                catch
+                    gSeqData.TaskIdx=0;
+                end
+
+            case 6 % ONE CYCLE OF SOLVER, GRAPH, PLOT CRI EACH
+                try
+                    if isfolder(defaultPath)
+                        [fn pn]=uigetfile([defaultPath,'\selectfile.txt']);
+                    else
+                        [fn pn]=uigetfile([RootPath,'\selectfile.txt']);
+                    end
+    
+                    if pn==0
+                        gSeqData.TaskIdx=100;
+                    else
+                        org=importdata([pn fn]);
+                        [m n]=size(org);
+    
+                        for i=1:m
+                            UserPathTemp=org(i,1);
+                            gSeqData.FolderInfo.UserPath=cell2mat(UserPathTemp);
+                            % statement
+                            cd(gSeqData.FolderInfo.CurrentPath);
+                            clc
+                        end
+                        cd(gSeqData.FolderInfo.CurrentPath);
                         gSeqData.TaskIdx=0;
                     end
                 catch
@@ -128,7 +217,7 @@
                 end
                 
 
-            case 11 % BATCH PROCESS 1 - (SOLVER MULTI RUN)
+            case 11 % SOLVER MULTI RUN
                 try
                     if isfolder(defaultPath)
                         [fn pn]=uigetfile([defaultPath,'\selectfile.txt']);
@@ -156,7 +245,7 @@
                 end
 
 
-            case 12 % BATCH PROCESS 2 - (GRAPH GENERATING MULTI RUN)
+            case 22 % GRAPH GENERATING MULTI RUN
                 try
                     if isfolder(defaultPath)
                         [fn pn]=uigetfile([defaultPath,'\selectfile.txt']);
@@ -175,6 +264,8 @@
                             gSeqData.FolderInfo.UserPath=cell2mat(UserPathTemp);
                             %statement -> function for graph generating
                             cd(gSeqData.FolderInfo.CurrentPath);
+                            setBodyProperty(gSeqData, 'KHU')
+                            gSeqData=Graph_Batch(gSeqData);
                             clc
                         end
                         cd(gSeqData.FolderInfo.CurrentPath);
@@ -186,7 +277,7 @@
 
                 
 
-            case 13 % BATCH PROCESS 3 - (PLOT CRI MULTI RUN)
+            case 33 % PLOT CRI MULTI RUN
                 try
                     if isfolder(defaultPath)
                         [fn pn]=uigetfile([defaultPath,'\selectfile.txt']);
@@ -214,9 +305,81 @@
                     gSeqData.TaskIdx=0;
                 end
 
-                
+            case 44 % REPORT GENERATION MULTI
+                try
+                    if isfolder(defaultPath)
+                        [fn pn]=uigetfile([defaultPath,'\selectfile.txt']);
+                    else
+                        [fn pn]=uigetfile([RootPath,'\selectfile.txt']);
+                    end
+    
+                    if pn==0
+                        gSeqData.TaskIdx=100;
+                    else
+                        org=importdata([pn fn]);
+                        [m n]=size(org);
+    
+                        for i=1:m
+                            UserPathTemp=org(i,1);
+                            gSeqData.FolderInfo.UserPath=cell2mat(UserPathTemp);
+                            % statement
+                            cd(gSeqData.FolderInfo.CurrentPath);
+                            Status=AutoReport_SFD(gSeqData.FolderInfo.UserPath, gSeqData.FolderInfo.AppDataPath);
+                            clc
+                        end
+                        cd(gSeqData.FolderInfo.CurrentPath);
+                        gSeqData.TaskIdx=0;
+                    end
+                catch
+                    gSeqData.TaskIdx=0;
+                end
 
-            case 14 % BATCH PROCESS 4 - ("SOLVER - GRAPH SET" MULTI RUN)
+            case 55 % ONE STEP PROCESS MULTI (SOLVER TO REPORT MULTI)
+                try
+                    if isfolder(defaultPath)
+                        [fn pn]=uigetfile([defaultPath,'\selectfile.txt']);
+                    else
+                        [fn pn]=uigetfile([RootPath,'\selectfile.txt']);
+                    end
+    
+                    if pn==0
+                        gSeqData.TaskIdx=100;
+                    else
+                        org=importdata([pn fn]);
+                        [m n]=size(org);
+    
+                        for i=1:m
+                            UserPathTemp=org(i,1);
+                            gSeqData.FolderInfo.UserPath=cell2mat(UserPathTemp);
+                            %statement
+                            cd(gSeqData.FolderInfo.CurrentPath);
+                            try
+                                gSeqData=RunSolver(gSeqData);
+                            catch
+                                gSeqData.TaskIdx=0;
+                            end
+    
+                            if gSeqData.CalculationSuccess
+                                cd(gSeqData.FolderInfo.CurrentPath);
+                                gSeqData=Plot_CRI_Batch(gSeqData);
+                            end
+    
+                            if gSeqData.PlotCRIDone
+                                cd(gSeqData.FolderInfo.CurrentPath);
+                                Status=AutoReport_SFD(gSeqData.FolderInfo.UserPath, gSeqData.FolderInfo.AppDataPath);
+                            end
+    
+                            gSeqData.TaskIdx=0;
+                            clc
+                        end
+                        cd(gSeqData.FolderInfo.CurrentPath);
+                        gSeqData.TaskIdx=0;
+                    end
+                catch
+                    gSeqData.TaskIdx=0;
+                end
+
+            case 66 % BATCH PROCESS 6 - ("SOLVER - GRAPH - PLOT CRI SET" MULTI RUN)
                 try
                     if isfolder(defaultPath)
                         [fn pn]=uigetfile([defaultPath,'\selectfile.txt']);
@@ -244,7 +407,8 @@
                     gSeqData.TaskIdx=0;
                 end
 
-            case 15 % BATCH PROCESS 5 - (ONE CYCLE OF SOLVER, GRAPH, PLOT CRI EACH)
+
+            case 70 % SOLVER - GRAPH SET" MULTI RUN
                 try
                     if isfolder(defaultPath)
                         [fn pn]=uigetfile([defaultPath,'\selectfile.txt']);
@@ -273,133 +437,7 @@
                 end
 
 
-            case 16 % BATCH PROCESS 6 - ("SOLVER - GRAPH - PLOT CRI SET" MULTI RUN)
-                try
-                    if isfolder(defaultPath)
-                        [fn pn]=uigetfile([defaultPath,'\selectfile.txt']);
-                    else
-                        [fn pn]=uigetfile([RootPath,'\selectfile.txt']);
-                    end
-    
-                    if pn==0
-                        gSeqData.TaskIdx=100;
-                    else
-                        org=importdata([pn fn]);
-                        [m n]=size(org);
-    
-                        for i=1:m
-                            UserPathTemp=org(i,1);
-                            gSeqData.FolderInfo.UserPath=cell2mat(UserPathTemp);
-                            % statement
-                            cd(gSeqData.FolderInfo.CurrentPath);
-                            clc
-                        end
-                        cd(gSeqData.FolderInfo.CurrentPath);
-                        gSeqData.TaskIdx=0;
-                    end
-                catch
-                    gSeqData.TaskIdx=0;
-                end
-
-            case 20 % REPORT GENERATION
-                try
-                     if isfolder(defaultPath)
-                        gSeqData.FolderInfo.UserPath=uigetdir(defaultPath);   
-                    else
-                        gSeqData.FolderInfo.UserPath=uigetdir([RootPath,'\']);
-                    end
-    
-                    if gSeqData.FolderInfo.UserPath==0
-                        gSeqData.TaskIdx=100;
-                    else
-                        Status=AutoReport_SFD(gSeqData.FolderInfo.UserPath, gSeqData.FolderInfo.AppDataPath);
-                        gSeqData.TaskIdx=0;       
-                    end
-                catch
-                    gSeqData.TaskIdx=0;
-                end
-
-
-            case 21 % REPORT GENERATION MULTI
-                try
-                    if isfolder(defaultPath)
-                        [fn pn]=uigetfile([defaultPath,'\selectfile.txt']);
-                    else
-                        [fn pn]=uigetfile([RootPath,'\selectfile.txt']);
-                    end
-    
-                    if pn==0
-                        gSeqData.TaskIdx=100;
-                    else
-                        org=importdata([pn fn]);
-                        [m n]=size(org);
-    
-                        for i=1:m
-                            UserPathTemp=org(i,1);
-                            gSeqData.FolderInfo.UserPath=cell2mat(UserPathTemp);
-                            % statement
-                            cd(gSeqData.FolderInfo.CurrentPath);
-                            clc
-                        end
-                        cd(gSeqData.FolderInfo.CurrentPath);
-                        gSeqData.TaskIdx=0;
-                    end
-                catch
-                    gSeqData.TaskIdx=0;
-                end
-
-                
-
-            case 30 % ONE STEP PROCESS (SOLVER TO REPORT)
-                try
-                    if isfolder(defaultPath)
-                        gSeqData.FolderInfo.UserPath=uigetdir(defaultPath);   
-                    else
-                        gSeqData.FolderInfo.UserPath=uigetdir([RootPath,'\']);
-                    end
-    
-                    if gSeqData.FolderInfo.UserPath==0
-                        gSeqData.TaskIdx=100;
-                    else
-                        %statement
-                        gSeqData.TaskIdx=0;
-                    end
-                catch
-                    gSeqData.TaskIdx=0;
-                end
-                
-
-            case 31 % ONE STEP PROCESS MULTI (SOLVER TO REPORT MULTI)
-                try
-                    if isfolder(defaultPath)
-                        [fn pn]=uigetfile([defaultPath,'\selectfile.txt']);
-                    else
-                        [fn pn]=uigetfile([RootPath,'\selectfile.txt']);
-                    end
-    
-                    if pn==0
-                        gSeqData.TaskIdx=100;
-                    else
-                        org=importdata([pn fn]);
-                        [m n]=size(org);
-    
-                        for i=1:m
-                            UserPathTemp=org(i,1);
-                            gSeqData.FolderInfo.UserPath=cell2mat(UserPathTemp);
-                            % statement
-                            cd(gSeqData.FolderInfo.CurrentPath);
-                            clc
-                        end
-                        cd(gSeqData.FolderInfo.CurrentPath);
-                        gSeqData.TaskIdx=0;
-                    end
-                catch
-                    gSeqData.TaskIdx=0;
-                end
-
-                
-
-            case 60 % ONE STEP PROCESS (SOLVER TO REPORT with SAFETY_VELOCITY)')
+            case 80 % ONE STEP PROCESS (SOLVER TO REPORT with SAFETY_VELOCITY)')
                 try
                     if isfolder(defaultPath)
                         gSeqData.FolderInfo.UserPath=uigetdir(defaultPath);   

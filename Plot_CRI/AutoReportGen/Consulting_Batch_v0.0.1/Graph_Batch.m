@@ -32,6 +32,31 @@ function gSeqData=Graph_Batch(gSeqData)
             tickString{RobotLinkNum+i}=['EE',num2str(i)];
         end
     end
+    
+%     CobotColor={};
+%     EEColor={};
+% 
+%     fieldname=fieldnames(gSeqData.SimInfo);
+% 
+%     for i=1:length(fieldname)
+%         if strcmpi(fieldname{i},'RobotLinkInfo')
+%             for j=1:size(gSeqData.SimInfo.RobotLinkInfo,1)
+%                 CobotColor=[CobotColor, gSeqData.SimInfo.RobotLinkInfo(j).Color ];
+%             end
+%         end
+%     end
+% 
+%     for i=1:length(fieldname)
+%         if strcmpi(fieldname{i},'RobotEndEffectorInfo')
+%             for j=1:size(gSeqData.SimInfo.RobotEndEffectorInfo,1)
+%                 EEColor=[EEColor, gSeqData.SimInfo.RobotEndEffectorInfo(j).Color ];
+%             end
+%         end
+%     end
+% 
+%     CobotColor=CobotColor';
+%     EEColor=EEColor';
+%     AllColor=[CobotColor;EEColor];
 
     newcolor = {
         '#3530d1';'#3beb26';'#d03a0a';'#156465';'#ebe58f';'#f277c1';'#10efb7';
@@ -239,7 +264,7 @@ function gSeqData=Graph_Batch(gSeqData)
             tempPressurefield=zeros(m,n);
 
             ColliBody=string(gSeqData.SimInfo.RiskSpaceInfo(1).ColliBody);
-            [bodymsg, FDen, PDen]=Reference_CR(ColliBody, prefix)
+            [bodymsg, FDen, PDen]=Reference_CR(ColliBody, prefix);
     
             for timeidx=1:m
                 tempIdx=find(OverlappedBoxIndex(timeidx,:)==j);
