@@ -22,7 +22,8 @@ function gSeqData = RunSolver(gSeqData)
     
     FolderInfo=dir(CorePath);
     CorePath=[CorePath,'\',FolderInfo(size(FolderInfo,1)).name];
-    CoreFileName=['SafetyCore_',FolderInfo(size(FolderInfo,1)).name,'.exe'];
+%     CoreFileName=['SafetyCore_',FolderInfo(size(FolderInfo,1)).name,'.exe'];
+    CoreFileName='D:\JayLim\OneDrive\SAFETICS\03_consulting\SFT_DEV\JAYLIM_DEV\Consulting_package\SafetyCore\v1.2.3\SafetyCoreTest.exe';
     CMDPath='C:\Windows\System32\cmd.exe - ';
     ExeSwIdx=[CMDPath,CoreFileName];
 

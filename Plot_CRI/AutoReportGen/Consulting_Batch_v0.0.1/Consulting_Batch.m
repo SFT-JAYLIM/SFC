@@ -43,7 +43,9 @@
                 disp('    05. ONE STEP PROCESS FOR SOLVER TO REPORT')
                 disp(' ')
                 disp('    06. ONE CYCLE OF SOLVER, GRAPH, PLOT CRI')
-                disp(' ')
+                disp(' ')          
+                disp('    70. SOLVER - GRAPH SET" MULTI RUN')
+                disp(' ')          
                 disp('    11. SOLVER MULTI RUN')
                 disp(' ')
                 disp('    22. GRAPH GENERATING MULTI RUN')
@@ -58,7 +60,13 @@
                 disp(' ')          
                 disp('    70. SOLVER - GRAPH SET" MULTI RUN')
                 disp(' ')
-                disp('    80. ONE STEP PROCESS (SOLVER TO REPORT with SAFETY_VELOCITY)')
+                disp('    80. SOLVER TO REPORT with SAFETY_VELOCITY')
+                disp(' ')
+                disp('    81. SOFT COVER AUTO ATTACCH PROCESS')
+                disp(' ')
+                disp('    82. OPTIMUM VELOCITY CAL. PROCESS')
+                disp(' ')
+                disp('    83. OPTIMUM SFAETY PROCESS')
                 disp(' ')
                 disp('    99. EXIT')
                 disp(' ')
@@ -105,7 +113,6 @@
                     else
                         % Statement
                         cd(gSeqData.FolderInfo.CurrentPath);
-                        setBodyProperty(gSeqData, 'KHU')
                         gSeqData=Graph_Batch(gSeqData);
                         gSeqData.TaskIdx=0;
                     end
@@ -191,30 +198,70 @@
             case 6 % ONE CYCLE OF SOLVER, GRAPH, PLOT CRI EACH
                 try
                     if isfolder(defaultPath)
-                        [fn pn]=uigetfile([defaultPath,'\selectfile.txt']);
+                        gSeqData.FolderInfo.UserPath=uigetdir(defaultPath);   
                     else
-                        [fn pn]=uigetfile([RootPath,'\selectfile.txt']);
+                        gSeqData.FolderInfo.UserPath=uigetdir([RootPath,'\']);
                     end
     
-                    if pn==0
+                    if gSeqData.FolderInfo.UserPath==0
                         gSeqData.TaskIdx=100;
                     else
-                        org=importdata([pn fn]);
-                        [m n]=size(org);
-    
-                        for i=1:m
-                            UserPathTemp=org(i,1);
-                            gSeqData.FolderInfo.UserPath=cell2mat(UserPathTemp);
-                            % statement
-                            cd(gSeqData.FolderInfo.CurrentPath);
-                            clc
+                        % statement
+                        cd(gSeqData.FolderInfo.CurrentPath);
+                             
+                        try
+                            gSeqData=RunSolver(gSeqData);
+                        catch
+                            gSeqData.TaskIdx=0;
                         end
+    
+                        if gSeqData.CalculationSuccess
+                            cd(gSeqData.FolderInfo.CurrentPath);
+                            gSeqData=Graph_Batch(gSeqData);
+                            gSeqData=Plot_CRI_Batch(gSeqData);
+                        end
+                        clc
+                    end
                         cd(gSeqData.FolderInfo.CurrentPath);
                         gSeqData.TaskIdx=0;
-                    end
+                    
                 catch
                     gSeqData.TaskIdx=0;
                 end
+
+            case 7
+                 try
+                    if isfolder(defaultPath)
+                        gSeqData.FolderInfo.UserPath=uigetdir(defaultPath);   
+                    else
+                        gSeqData.FolderInfo.UserPath=uigetdir([RootPath,'\']);
+                    end
+    
+                    if gSeqData.FolderInfo.UserPath==0
+                        gSeqData.TaskIdx=100;
+                    else
+                        % statement
+                        cd(gSeqData.FolderInfo.CurrentPath);
+                             
+                        try
+                            gSeqData=RunSolver(gSeqData);
+                        catch
+                            gSeqData.TaskIdx=0;
+                        end
+    
+                        if gSeqData.CalculationSuccess
+                            cd(gSeqData.FolderInfo.CurrentPath);
+                            gSeqData=Graph_Batch(gSeqData);
+                        end
+                        clc
+                    end
+                        cd(gSeqData.FolderInfo.CurrentPath);
+                        gSeqData.TaskIdx=0;
+                    
+                catch
+                    gSeqData.TaskIdx=0;
+                end
+
                 
 
             case 11 % SOLVER MULTI RUN
@@ -324,7 +371,11 @@
                             gSeqData.FolderInfo.UserPath=cell2mat(UserPathTemp);
                             % statement
                             cd(gSeqData.FolderInfo.CurrentPath);
-                            Status=AutoReport_SFD(gSeqData.FolderInfo.UserPath, gSeqData.FolderInfo.AppDataPath);
+                            try
+                                Status=AutoReport_SFD(gSeqData.FolderInfo.UserPath, gSeqData.FolderInfo.AppDataPath);
+                            catch
+
+                            end
                             clc
                         end
                         cd(gSeqData.FolderInfo.CurrentPath);
@@ -398,6 +449,18 @@
                             gSeqData.FolderInfo.UserPath=cell2mat(UserPathTemp);
                             % statement
                             cd(gSeqData.FolderInfo.CurrentPath);
+                             
+                            try
+                                gSeqData=RunSolver(gSeqData);
+                            catch
+                                gSeqData.TaskIdx=0;
+                            end
+    
+                            if gSeqData.CalculationSuccess
+                                cd(gSeqData.FolderInfo.CurrentPath);
+                                gSeqData=Graph_Batch(gSeqData);
+                                gSeqData=Plot_CRI_Batch(gSeqData);
+                            end
                             clc
                         end
                         cd(gSeqData.FolderInfo.CurrentPath);
@@ -426,6 +489,19 @@
                             UserPathTemp=org(i,1);
                             gSeqData.FolderInfo.UserPath=cell2mat(UserPathTemp);
                             % statement
+                            cd(gSeqData.FolderInfo.CurrentPath);
+                             
+                            try
+                                gSeqData=RunSolver(gSeqData);
+                            catch
+                                gSeqData.TaskIdx=0;
+                            end
+    
+                            if gSeqData.CalculationSuccess
+                                cd(gSeqData.FolderInfo.CurrentPath);
+                                gSeqData=Graph_Batch(gSeqData);
+                            end
+                            clc
                             cd(gSeqData.FolderInfo.CurrentPath);
                             clc
                         end
